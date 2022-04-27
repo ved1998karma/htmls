@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="gridlayout.css">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Document</title>
+</head>
+
+
+<body>
+  <div style="height:500px; width: 100%;"></div>
+  <div class="vertical">
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <svg viewBox="0 0 648.04962 2732.9509" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+      xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+
+      <path class="dashed" stroke-width="5" fill="grey" fill-rule="evenodd" stroke-linecap="round" fill="#9B9B9B"
+        d="M582.263 2594.19C581.886 2537.54 546.008 2417.67 405.515 2391.38C229.899 2358.53 81.4762 2188.58 197.042 1991.43C203.463 1961.98 250.067 1891.05 385.121 1843.01C553.938 1782.96 627.583 1687.79 652.509 1598.28C677.435 1508.78 713.691 1344.49 589.061 1230.06C464.431 1115.62 359.062 1116.76 224.235 1112.22C89.4076 1107.69 -74.8775 913.949 39.5556 697.546C66.2985 649.592 149.199 552.911 266.859 549.814C413.934 545.944 556.79 593.45 556.79 216.987C556.79 194.348 544.403 122.946 496.638 99.9614C443.637 74.4567 449.764 15.9988 452.794 0.70752" />
+        
+    </svg>
+
+  </div>
+  <div style="height:2000px;"></div>
+
+
+  <script type="module">
+    let ticking = false;
+    let last_known_scroll_position = 0;
+    let updatePath = false;
+
+    const element = document.querySelector('svg');
+    const path = element.querySelector('path')
+    let totalLength = 0;
+
+    initPath(path)
+
+    function initPath(path) {
+      totalLength = path.getTotalLength();
+      path.style.strokeDasharray = `${totalLength}`;
+      path.style.strokeDashoffset = totalLength;
+    }
+
+
+    function handleEntries(entries) {
+      console.log(entries)
+      entries.forEach(entry => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+          console.log(entry.target)
+        }
+
+      })
+    }
+
+    let observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          console.log(entry);
+          updatePath = true;
+        } else {
+          updatePath = false;
+        }
+      });
+    }, { rootMargin: "0px 0px 0px 0px" });
+
+
+    observer.observe(element);
+
+    function doSomething(scroll_pos) {
+      if (!updatePath) {
+        return;
+      }
+      window.requestAnimationFrame(() => {
+        const center = window.innerHeight / 2;
+        const boundaries = path.getBoundingClientRect();
+        const top = boundaries.top;
+        const height = boundaries.height;
+        const percentage = (center - top) / height;
+        const drawLength = percentage > 0 ? totalLength * percentage : 0;
+        path.style.strokeDashoffset = drawLength < totalLength ? totalLength - drawLength : 0;
+
+      })
+
+    }
+
+    window.addEventListener('scroll', function (e) {
+      last_known_scroll_position = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          doSomething(last_known_scroll_position);
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>

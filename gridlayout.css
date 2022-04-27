@@ -1,0 +1,19 @@
+.dashed {
+  stroke: #f1f1f1;
+  stroke-dashoffset:1000;
+  stroke-dasharray:0;
+}
+
+svg {
+  width:100vw;
+  background: grey;
+}
+
+path {
+  transition: stroke-dashoffset 1000ms ease;
+}
+
+.vertical{
+  display:flex;
+  flex-direction: column;
+}

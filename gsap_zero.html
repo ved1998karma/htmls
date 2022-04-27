@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrapper {
+      background-color: rgb(209, 209, 209);
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      width: 500px;
+      height: 500px;
+      overflow: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="55.441" height="48.014" viewBox="0 0 55.441 48.014">
+      <g id="Group_1446" data-name="Group 1446" transform="translate(-74.981 -34.934)">
+        <path class="cut_1" id="Path_2054" data-name="Path 2054" d="M186.274,108.285l4.578,8.5.665-1.166-2.753-11.646Z"
+          transform="translate(-92.715 -57.515)" fill="#171819" />
+        <path class="cut_2" id="Path_2056" data-name="Path 2056" d="M175.742,149.971l.372-.653-4.584-8.512-1.681,2.912Z"
+          transform="translate(-79.032 -88.199)" fill="#171819" />
+        <path class="cut_3" id="Path_2055" data-name="Path 2055"
+          d="M162.931,174.755l.268-.469-5.9-6.26-1.034,1.79-.35.606Z" transform="translate(-67.425 -110.875)"
+          fill="#171819" />
+        <path class="cut_4" id="Path_2060" data-name="Path 2060" d="M150.356,196.581l.281-.492-7.024-4.338-1.381,2.393Z"
+          transform="translate(-56.025 -130.64)" fill="#171819" />
+        <path class="cut_5" id="Path_2061" data-name="Path 2061" d="M136.527,218.614l.267-.468-8.134-2.44-1.607,2.783Z"
+          transform="translate(-43.381 -150.596)" fill="#171819" />
+        <path class="cut_6" id="Path_2058" data-name="Path 2058" d="M118.769,244.41l.673-1.181-9.485-.126-2.185,3.784Z"
+          transform="translate(-27.318 -173.421)" fill="#171819" />
+
+        <path class="upper_cut" id="Path_2057" data-name="Path 2057"
+          d="M211.816,55.808l2.589-4.539,6.5,11.4h9.509l-2.152-3.727-13.86-24.007-5.338,9.246Z"
+          transform="translate(-111.704)" fill="#171819" />
+        <path class="lower_cut" id="Path_2059" data-name="Path 2059"
+          d="M119.756,211.889h-9.521l6.083,10.663H89.085l1.155-2.024L79.227,223.01l-4.246,7.355h55.441Z"
+          transform="translate(0 -147.417)" fill="#171819" />
+      </g>
+    </svg>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+    integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script type="module">
+
+    var tle = gsap.timeline({ defaults: { duration: .7, ease: Back.easeOut.config(2), opacity: 1 } })
+    tle.from([".upper_cut",".lower_cut"], { scale: 0, transformOrigin: "center" }, "=.0")
+      .from(".cut_1", { scale: 0, transformOrigin: "center" }, "=.0")
+      .from(".cut_2", { scale: 0, transformOrigin: "center" }, "=.0")
+      .from(".cut_3", { scale: 0, transformOrigin: "center" }, "=.0")
+      .from(".cut_4", { scale: 0, transformOrigin: "center" }, "=.0")
+      .from(".cut_5", { scale: 0, transformOrigin: "center" }, "=.0")
+      .from(".cut_6", { scale: 0, transformOrigin: "center" }, "=.0")
+
+
+  </script>
+
+</body>
+
+
+</html>

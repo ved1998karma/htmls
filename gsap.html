@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrapper {
+      background-color: rgb(209, 209, 209);
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg{
+      width: 500px;
+      height: 500px;
+      overflow: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 187.318 181.32">
+      <g id="Group_7045" data-name="Group 7045" transform="translate(-861 -44332.5)">
+        <g id="Icon_feather-smile" data-name="Icon feather-smile" transform="translate(874 44339.5)">
+          <path id="Path_10106" class="circle_" data-name="Path 10106" 
+            d="M170.318,86.659A83.659,83.659,0,1,1,86.659,3,83.659,83.659,0,0,1,170.318,86.659Z" fill="none"
+            stroke="#00bf5f" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+
+          <path id="Path_10107" class="smile_" data-name="Path 10107" d="M12,21S24.549,37.732,45.464,37.732,78.927,21,78.927,21"
+            transform="translate(41.196 82.391)" fill="none" stroke="#00bf5f" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="8" />
+
+          <path id="Path_10108" class="eyes_" data-name="Path 10108" d="M13.5,13.5h.084" transform="translate(48.061 48.061)"
+            fill="none" stroke="#00bf5f" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+
+          <path id="Path_10109" class="eyes_" data-name="Path 10109" d="M22.5,13.5h.084" transform="translate(89.257 48.061)"
+            fill="none" stroke="#00bf5f" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+        </g>
+       
+      </g>
+    </svg>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+    integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script type="module">
+    
+    var tle = gsap.timeline({ defaults:{ duration:.7, ease:Back.easeOut.config(2), opacity:1 } })
+    tle.from(".circle_", {delay:1, scale:0, transformOrigin:"center" } ,"=.1")
+    .from(".eyes_", {delay:.2, scale:0, transformOrigin:"center"}, "=.0")
+    .from(".smile_", {delay:0, scale:0, transformOrigin:"center"}, "=.1")
+
+
+  </script>
+
+</body>
+
+
+</html>
