@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+        nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: aliceblue;
+        }
+
+        .nav_links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav_links li {
+            padding: 10px 50px;
+            z-index: 99;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .front_cover {
+            width: 30%;
+            height: fit-content;
+        }
+
+        .front_deck {
+            width: 30%;
+        }
+
+        .cursor{
+            width: 5rem;height: 5rem;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 50%;
+            position: absolute;   
+            transform: translate(-50%, -50%);         
+            pointer-events: none;
+            transition: all .5s ease;
+            transition-property: background, transform;
+            transform-origin: 100% 100%;
+            z-index: 9;
+            /* backdrop-filter: grayscale(); */
+        }
+        .link_grow{
+            transform: scale(2);
+            background-color: rgb(0, 0, 0);
+        }
+        .hovered_link{
+            /* color: rgb(255, 255, 255); */
+            mix-blend-mode: difference;
+
+        }
+
+        img {
+            width: 100%;
+            max-height: fit-content;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor"></div>
+    <nav>
+        <h1>Ved </h1>
+        <ul class="nav_links">
+            <li>home</li>
+            <li>about</li>
+            <li>contact</li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="front_cover">
+            <img
+                src="https://images.unsplash.com/photo-1651150538638-dcf6f8c90692?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
+        </div>
+        <div class="front_deck">
+            <h2> Ved </h2>
+        </div>
+
+    </section>
+
+    <script>
+        let mouseCursor = document.querySelector(".cursor");
+        let navLinks = document.querySelectorAll(".nav_links li");
+
+        window.addEventListener('mousemove', cursor);
+
+        function cursor(e){
+            console.log(e);
+            mouseCursor.style.top = e.pageY + "px";
+            mouseCursor.style.left = e.pageX + "px";
+        }
+
+        navLinks.forEach(link=>{
+            link.addEventListener("mouseover", ()=>{
+                mouseCursor.classList.add("link_grow")
+                link.classList.add("hovered_link")
+            })
+            link.addEventListener("mouseleave", ()=>{
+                mouseCursor.classList.remove("link_grow")
+                link.classList.remove("hovered_link")
+            })
+        })
+    </script>s
+
+</body>
+
+</html>
